@@ -1,7 +1,9 @@
 package com.devesh.controller;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -22,6 +24,7 @@ import com.devesh.entity.Customer;
 import com.devesh.entity.Property;
 import com.devesh.entity.UserLogin;
 import com.devesh.repository.CustomerRepository;
+import com.devesh.service.MySpringBootServiceImpl;
 import com.devesh.utils.PropertyCSVProcessor;
 import com.devesh.utils.UserLoginUtil;
 
@@ -41,7 +44,23 @@ public class MySpringBootController {
 	
 	@Autowired
 	private PropertyCSVProcessor propertyList;
+	
+	@Autowired
+	private MySpringBootServiceImpl mySpringBootServiceImpl;
 
+	// List of timezone from system
+	@GetMapping("/timezone")
+	public ResponseEntity<Map<String, String>> getSystemTimezoneList() throws IOException, InterruptedException {
+		logger.info("---Retirieve List of timezone from system ---");
+		return ResponseEntity.ok(mySpringBootServiceImpl.getSystemTimezoneList());
+	}
+	
+	// List of installed languages from system
+		@GetMapping("/languages")
+		public ResponseEntity<Map<String, String>> getSystemLanguageList() throws IOException, InterruptedException {
+			logger.info("---Retirieve List of languages from system ---");
+			return ResponseEntity.ok(mySpringBootServiceImpl.getSystemInstalledLanguageList());
+		}
 	
 	// List Properties
 	@GetMapping("/properties")
