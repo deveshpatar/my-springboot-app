@@ -11,4 +11,13 @@ public class Constants {
 	public static final String ANTONYM_KEY = "Autonym         : ";
 	public static final String INSTALLED_LANGUAGE_LIST_PS = "powershell.exe Get-WinUserLanguageList";
 
+
+	static String driveName = "V:";
+	static String drivePath = "\\\\DESKTOP-Q0FUS1Q\\Songs";
+	String username = "DOMAIN-NAME\\USERNAME";
+	String password = "PASSWORD";
+
+	public static final String MAP_CORNELLAD_NETWORK_DRIVE = "cmd.exe /c net use "+driveName+" "+drivePath+" /persisten:yes";
+	public static final String MAP_NON_CORNELLAD_NETWORK_DRIVE = "cmd.exe /c net use R: \\\\CEPSNYLPENG4511\\Home PASSWORD /user:DOMAIN-NAME\\USERNAME /persisten:yes";
+	public static final String DELETE_NETWORK_DRIVE = "cmd.exe /c net use "+driveName+" /delete";
 }
